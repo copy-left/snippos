@@ -5,5 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="db/changelog/202003282144_entity_user.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202005042100_entity_authority.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202005042101_entity_user_authority.xml" relativeToChangelogFile="false"/>
+
+    <!--Constraint files only after Table creations-->
+    <include file="db/changelog/202005042107_constraints_user_authority.xml" relativeToChangelogFile="false"/>
+
 
 </databaseChangeLog>

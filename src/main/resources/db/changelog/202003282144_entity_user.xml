@@ -24,4 +24,21 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="202003282144-02" author="midhun">
+        <addColumn tableName="user">
+            <column name="email" type="varchar(100)">
+                <constraints unique="true" nullable="true"/>
+            </column>
+            <column name="password_hash" type="varchar(60)"/>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <createIndex indexName="idx_user_email"
+                     tableName="user"
+                     unique="true">
+            <column name="email" type="varchar(100)"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>
