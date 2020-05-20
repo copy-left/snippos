@@ -41,4 +41,13 @@
         </createIndex>
     </changeSet>
 
+    <changeSet id="202003282144-03" author="midhun">
+        <loadData encoding="UTF-8"
+                  file="db/data/users.csv"
+                  separator=";"
+                  tableName="user">
+            <column name="created_date" type="timestamp"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

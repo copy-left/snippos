@@ -21,9 +21,9 @@ public class AuthProperties {
 
             private String secret;
 
-            private long tokenValidityInSeconds = 1800;
+            private long tokenValidityInMilliSeconds = 1800000;
 
-            private long tokenValidityInSecondsForRememberMe = 2592000;
+            private long tokenValidityInMilliSecondsForRememberMe = 2592000;
 
         }
     }

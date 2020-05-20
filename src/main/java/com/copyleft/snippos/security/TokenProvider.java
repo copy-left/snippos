@@ -50,9 +50,9 @@ public class TokenProvider {
         long now = (new Date()).getTime();
         Date validity;
         if (rememberMe) {
-            validity = new Date(now + authProperties.getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe());
+            validity = new Date(now + authProperties.getAuthentication().getJwt().getTokenValidityInMilliSecondsForRememberMe());
         } else {
-            validity = new Date(now + authProperties.getAuthentication().getJwt().getTokenValidityInSeconds());
+            validity = new Date(now + authProperties.getAuthentication().getJwt().getTokenValidityInMilliSeconds());
         }
         return Jwts.builder()
                 .setSubject(authentication.getName())

@@ -20,5 +20,11 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="202005042101-02" author="midhun">
+        <loadData encoding="UTF-8"
+                  file="db/data/user_authorities.csv"
+                  separator=";"
+                  tableName="user_authority"/>
+    </changeSet>
 
 </databaseChangeLog>

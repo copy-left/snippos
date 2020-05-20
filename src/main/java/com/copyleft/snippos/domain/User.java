@@ -1,6 +1,8 @@
 package com.copyleft.snippos.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,13 +10,16 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,6 +44,10 @@ public class User implements Serializable {
     @NotNull
     @Column(name="password_hash")
     private String password;
+
+    @NotNull
+    @Column(name="created_date")
+    private ZonedDateTime createdDate;
 
     @JsonIgnore
     @ManyToMany
