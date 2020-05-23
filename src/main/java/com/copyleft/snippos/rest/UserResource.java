@@ -65,7 +65,7 @@ public class UserResource {
     }
 
     @PostMapping("/users/authenticate")
-    public ResponseEntity<?> authorize(@Valid @RequestBody LoginDTO loginDTO, HttpServletResponse response, @RequestHeader("User-Agent") String userAgent) {
+    public ResponseEntity<?> authorize(@Valid @RequestBody LoginDTO loginDTO) {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword());
         try {
@@ -73,7 +73,6 @@ public class UserResource {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             boolean rememberMe = (loginDTO.getRememberMe() == null) ? false : loginDTO.getRememberMe();
             String jwt = tokenProvider.createToken(authentication, rememberMe);
-            response.addHeader(GeneralConstants.AUTHORIZATION_HEADER, "Bearer " + jwt);
             return ResponseEntity.ok(jwt);
         } catch (AuthenticationException exception) {
             return new ResponseEntity<>(Collections.singletonMap("AuthenticationException",exception.getLocalizedMessage()), HttpStatus.UNAUTHORIZED);
